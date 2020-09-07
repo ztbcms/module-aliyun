@@ -1,7 +1,7 @@
 <?php
 
-return array(
-    array(
+return [
+    [
         //父菜单ID，NULL或者不写系统默认，0为顶级菜单
         "parentid" => 0,
         //地址，[模块/]控制器/方法
@@ -15,37 +15,44 @@ return array(
         //备注
         "remark" => "",
         //子菜单列表
-        "child" => array(
-            array(
+        "child" => [
+            [
                 "route" => "aliyun/setting/index",
                 "type" => 1,
                 "status" => 1,
                 "name" => "设置",
                 "remark" => ""
-            ),
-            array(
+            ],
+            [
                 "route" => "aliyun/sms/index",
                 "type" => 1,
                 "status" => 1,
-                "name" => "Sms",
+                "name" => "SMS",
                 "remark" => "",
-                "child" => array(
-                    array(
+                "child" => [
+                    [
                         "route" => "aliyun/sms/index",
                         "type" => 1,
                         "status" => 1,
                         "name" => "模板列表",
                         "remark" => ""
-                    ),
-                    array(
+                    ],
+                    [
                         "route" => "aliyun/sms/records",
                         "type" => 1,
                         "status" => 1,
                         "name" => "发送记录",
                         "remark" => ""
-                    ),
-                ),
-            ),
-        ),
-    ),
-);
+                    ],
+                ],
+            ],
+            [
+                "route" => "aliyun/oss/config",
+                "type" => 1,
+                "status" => 1,
+                "name" => "OSS",
+                "remark" => "",
+            ],
+        ]
+    ],
+];
