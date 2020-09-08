@@ -53,6 +53,29 @@ return [
                 "name" => "OSS",
                 "remark" => "",
             ],
+            [
+                "route" => "aliyun/pls/config",
+                "type" => 1,
+                "status" => 1,
+                "name" => "PLS",
+                "remark" => "",
+                "child" => [
+                    [
+                        "route" => "aliyun/pls/config",
+                        "type" => 1,
+                        "status" => 1,
+                        "name" => "配置",
+                        "remark" => ""
+                    ],
+                    [
+                        "route" => "aliyun/pls/index",
+                        "type" => 1,
+                        "status" => 1,
+                        "name" => "绑定记录",
+                        "remark" => ""
+                    ],
+                ],
+            ],
         ]
     ],
 ];

@@ -15,27 +15,23 @@ use AlibabaCloud\Client\Exception\ServerException;
 use app\aliyun\model\AliyunConfigModel;
 use app\aliyun\model\AliyunSmsTemplateLogModel;
 use app\aliyun\model\AliyunSmsTemplateModel;
+use app\common\service\BaseService;
 
-class AliyunSmsService
+class AliyunSmsService extends BaseService
 {
-    protected $error;
 
-    /**
-     * @return mixed
-     */
-    public function getError()
+    const REGION_ID = "cn-hangzhou";
+    const PRODUCT = "Dysmsapi";
+    const VERSION = "2017-05-25";
+    const HOST = "dysmsapi.aliyuncs.com";
+
+    public function __construct()
     {
-        return $this->error;
+        $config = AliyunConfigModel::column('value', 'key');
+        AlibabaCloud::accessKeyClient($config['access_key_id'], $config['access_key_secret'])
+            ->regionId(self::REGION_ID)
+            ->asDefaultClient();
     }
-
-    /**
-     * @param mixed $error
-     */
-    public function setError($error): void
-    {
-        $this->error = $error;
-    }
-
 
     function send($templateId, $phone, $params)
     {
@@ -48,21 +44,16 @@ class AliyunSmsService
         $smsTemplateLog->params = $paramsString;
         $smsTemplateLog->phone = $phone;
 
-        $config = AliyunConfigModel::column('value', 'key');
         $template = AliyunSmsTemplateModel::where('id', $templateId)->findOrEmpty();
-        AlibabaCloud::accessKeyClient($config['access_key_id'], $config['access_key_secret'])
-            ->regionId('cn-hangzhou')
-            ->asDefaultClient();
         try {
             $result = AlibabaCloud::rpc()
-                ->product('Dysmsapi')
-                ->version('2017-05-25')
+                ->product(self::PRODUCT)
+                ->version(self::VERSION)
                 ->action('SendSms')
                 ->method('POST')
-                ->host('dysmsapi.aliyuncs.com')
+                ->host(self::HOST)
                 ->options([
                     'query' => [
-                        'RegionId' => "cn-hangzhou",
                         'PhoneNumbers' => $phone,
                         'TemplateParam' => $paramsString,
                         'SignName' => $template->sign_name,
