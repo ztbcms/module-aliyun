@@ -18,6 +18,7 @@ use think\Request;
 
 class Pls extends AdminController
 {
+
     /**
      * 删除绑定关系
      * @param Request $request
@@ -60,7 +61,7 @@ class Pls extends AdminController
         if ($res) {
             return self::createReturn(true, [], "ok");
         } else {
-            return self::createReturn(true, [], $aliyunPlsService->getError());
+            return self::createReturn(false, [], $aliyunPlsService->getError());
         }
     }
 

@@ -85,7 +85,7 @@ class AliyunPlsService extends BaseService
                     'query' => $query,
                 ])
                 ->request();
-            if (!empty($res->Code && $res->Code === 'OK')) {
+            if (!empty($res->Code) && $res->Code === 'OK') {
                 $operateDbKey = $typeToKey[$operateType]['db_key'];
                 $aliyunPlsBindAxb->$operateDbKey = $updateValue;
                 $aliyunPlsBindAxb->save();
@@ -128,7 +128,7 @@ class AliyunPlsService extends BaseService
                         ],
                     ])
                     ->request();
-                if (!empty($res->Code && $res->Code === 'OK')) {
+                if (!empty($res->Code) && $res->Code === 'OK') {
                     $aliyunPlsBindAxb->status = AliyunPlsBindAxb::STATUS_INVALID;
                     $aliyunPlsBindAxb->result_msg = 'unbind success';
                     $aliyunPlsBindAxb->save();
@@ -175,7 +175,7 @@ class AliyunPlsService extends BaseService
                     ],
                 ])
                 ->request();
-            if (!empty($res->Code && $res->Code === 'OK')) {
+            if (!empty($res->Code) && $res->Code === 'OK') {
                 //调用成功
                 $SecretBindDetailDTO = $res['SecretBindDetailDTO'];
                 $aliyunPlsBindAxb->expiration = $SecretBindDetailDTO['ExpireDate'];
@@ -222,7 +222,7 @@ class AliyunPlsService extends BaseService
                     ],
                 ])
                 ->request();
-            if (!empty($res->Code && $res->Code === 'OK')) {
+            if (!empty($res->Code) && $res->Code === 'OK') {
                 //调用成功
                 $subsIds = empty($res->SubsId) ? '' : explode(',', $res->SubsId);
             } else {
