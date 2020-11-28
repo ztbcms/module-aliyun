@@ -73,7 +73,7 @@
                 getList: function () {
                     var _this = this;
                     $.ajax({
-                        url: "{:urlx('aliyun/sms/records')}",
+                        url: "{:api_url('/aliyun/sms/records')}",
                         data: Object.assign({
                             page: this.currentPage
                         }, this.searchForm),

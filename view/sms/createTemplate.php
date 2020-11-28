@@ -44,14 +44,14 @@
                 },
                 submit: function () {
                     $.ajax({
-                        url: "{:urlx('aliyun/sms/createTemplate')}",
+                        url: "{:api_url('/aliyun/sms/createTemplate')}",
                         data: this.form,
                         dataType: 'json',
                         type: 'post',
                         success: function (res) {
                             layer.msg(res.msg);
                             if (res.status) {
-                                location.href = "{:urlx('aliyun/sms/index')}"
+                                location.href = "{:api_url('/aliyun/sms/index')}"
                             }
                         }
                     })

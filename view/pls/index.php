@@ -7,7 +7,7 @@
 
             <el-form :inline="true" :model="searchForm">
                 <el-form-item>
-                    <el-button onclick="javascript:location.href='{:urlx(\'aliyun/pls/createBindAxb\')}';"
+                    <el-button onclick="javascript:location.href='{:api_url(\'/aliyun/pls/createBindAxb\')}';"
                                type="primary">绑定号码
                     </el-button>
                 </el-form-item>
@@ -171,7 +171,7 @@
                 submitUpdateBind: function () {
                     var _this = this;
                     $.ajax({
-                        url: "{:urlx('aliyun/pls/updateBind')}",
+                        url: "{:api_url('/aliyun/pls/updateBind')}",
                         data: this.updateForm,
                         dataType: 'json',
                         type: 'post',
@@ -200,7 +200,7 @@
                     var _this = this;
                     this.$confirm('是否确定删除该号码？').then(() => {
                         $.ajax({
-                            url: "{:urlx('aliyun/pls/deleteBind')}",
+                            url: "{:api_url('/aliyun/pls/deleteBind')}",
                             data: {bind_axb_id: bind_axb_id},
                             dataType: 'json',
                             type: 'post',
@@ -218,7 +218,7 @@
                     var _this = this;
                     this.$confirm('是否确定解绑该号码？').then(() => {
                         $.ajax({
-                            url: "{:urlx('aliyun/pls/unbindNumber')}",
+                            url: "{:api_url('/aliyun/pls/unbindNumber')}",
                             data: {bind_axb_id: bind_axb_id},
                             dataType: 'json',
                             type: 'post',
@@ -239,7 +239,7 @@
                 getList: function () {
                     var _this = this;
                     $.ajax({
-                        url: "{:urlx('aliyun/pls/getBindList')}",
+                        url: "{:api_url('/aliyun/pls/getBindList')}",
                         data: Object.assign({
                             page: this.currentPage
                         }, this.searchForm),

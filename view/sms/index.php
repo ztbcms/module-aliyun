@@ -4,7 +4,7 @@
             <span>短信模板</span>
         </div>
         <div style="padding-bottom: 20px">
-            <el-button onclick="javascript:location.href='{:urlx(\'aliyun/sms/createTemplate\')}';"
+            <el-button onclick="javascript:location.href='{:api_url(\'/aliyun/sms/createTemplate\')}';"
                        type="primary">添加模板
             </el-button>
         </div>
@@ -106,7 +106,7 @@
                     console.log('testForm', this.testForm);
                     var _this = this;
                     $.ajax({
-                        url: "{:urlx('aliyun/sms/sendTest')}",
+                        url: "{:api_url('/aliyun/sms/sendTest')}",
                         data: this.testForm,
                         dataType: 'json',
                         type: 'post',
@@ -138,7 +138,7 @@
                     var _this = this;
                     this.$confirm('是否该模板删除？').then(() => {
                         $.ajax({
-                            url: "{:urlx('aliyun/sms/deleteTemplate')}",
+                            url: "{:api_url('/aliyun/sms/deleteTemplate')}",
                             data: {template_id: template_id},
                             dataType: 'json',
                             type: 'post',
@@ -154,7 +154,7 @@
 
                 },
                 editTemplate: function (template_id) {
-                    location.href = "{:urlx('aliyun/sms/createTemplate')}?template_id=" + template_id
+                    location.href = "{:api_url('/aliyun/sms/createTemplate')}?template_id=" + template_id
                 },
                 currentPageChange(e) {
                     this.currentPage = e;
@@ -163,7 +163,7 @@
                 getList: function () {
                     var _this = this;
                     $.ajax({
-                        url: "{:urlx('aliyun/sms/getTemplateList')}",
+                        url: "{:api_url('/aliyun/sms/getTemplateList')}",
                         data: Object.assign({
                             page: this.currentPage
                         }, this.searchForm),

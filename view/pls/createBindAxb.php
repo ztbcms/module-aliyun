@@ -41,7 +41,7 @@
                 },
                 submit: function () {
                     $.ajax({
-                        url: "{:urlx('aliyun/pls/createBindAxb')}",
+                        url: "{:api_url('/aliyun/pls/createBindAxb')}",
                         data: this.form,
                         dataType: 'json',
                         type: 'post',
