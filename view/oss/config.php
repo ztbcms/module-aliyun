@@ -90,7 +90,7 @@
                     this.$refs['elForm'].validate(valid => {
                         if (!valid) return;
                         $.ajax({
-                            url: "{:urlx('aliyun/oss/editConfig')}",
+                            url: "{:api_url('/aliyun/oss/editConfig')}",
                             method: 'post',
                             dataType: 'json',
                             data: this.formData,

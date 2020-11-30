@@ -31,7 +31,7 @@
             methods: {
                 submit: function () {
                     $.ajax({
-                        url: "{:urlx('aliyun/setting/editConfig')}",
+                        url: "{:api_url('/aliyun/setting/editConfig')}",
                         data: this.form,
                         dataType: 'json',
                         type: 'post',
