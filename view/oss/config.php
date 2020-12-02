@@ -60,34 +60,32 @@
             // 插入export default里面的内容
             components: {},
             props: [],
-            data() {
-                return {
-                    formData: {
-                        attachment_driver: "{$siteConfig.attachment_driver}",
-                        attachment_aliyun_key_id: "{$aliyunConfig.access_key_id}",
-                        attachment_aliyun_key_secret: "{$aliyunConfig.access_key_secret}",
-                        attachment_aliyun_endpoint: "{$siteConfig.attachment_aliyun_endpoint}",
-                        attachment_aliyun_bucket: "{$siteConfig.attachment_aliyun_bucket}",
-                        attachment_aliyun_domain: "{$siteConfig.attachment_aliyun_domain}",
-                    },
-                    rules: {
-                        attachment_driver: [{
-                            required: true,
-                            message: '请选择网站存储方案',
-                            trigger: 'change'
-                        }],
-                    },
-                }
+            data: {
+                formData: {
+                    attachment_driver: "{$siteConfig.attachment_driver}",
+                    attachment_aliyun_key_id: "{$aliyunConfig.access_key_id}",
+                    attachment_aliyun_key_secret: "{$aliyunConfig.access_key_secret}",
+                    attachment_aliyun_endpoint: "{$siteConfig.attachment_aliyun_endpoint}",
+                    attachment_aliyun_bucket: "{$siteConfig.attachment_aliyun_bucket}",
+                    attachment_aliyun_domain: "{$siteConfig.attachment_aliyun_domain}",
+                },
+                rules: {
+                    attachment_driver: [{
+                        required: true,
+                        message: '请选择网站存储方案',
+                        trigger: 'change'
+                    }],
+                },
             },
             computed: {},
             watch: {},
-            created() {
+            created: function() {
             },
-            mounted() {
+            mounted: function() {
             },
             methods: {
-                submitForm() {
-                    this.$refs['elForm'].validate(valid => {
+                submitForm: function() {
+                    this.$refs['elForm'].validate(function(valid) {
                         if (!valid) return;
                         $.ajax({
                             url: "{:api_url('/aliyun/oss/editConfig')}",

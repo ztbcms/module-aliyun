@@ -136,7 +136,7 @@
                 },
                 deleteTemplate: function (template_id) {
                     var _this = this;
-                    this.$confirm('是否该模板删除？').then(() => {
+                    this.$confirm('是否该模板删除？').then(function() {
                         $.ajax({
                             url: "{:api_url('/aliyun/sms/deleteTemplate')}",
                             data: {template_id: template_id},
@@ -149,14 +149,12 @@
                                 }
                             }
                         })
-                    }).catch(err => {
-                    });
-
+                    })
                 },
                 editTemplate: function (template_id) {
                     location.href = "{:api_url('/aliyun/sms/createTemplate')}?template_id=" + template_id
                 },
-                currentPageChange(e) {
+                currentPageChange: function(e) {
                     this.currentPage = e;
                     this.getList();
                 },

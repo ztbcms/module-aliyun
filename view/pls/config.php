@@ -37,31 +37,29 @@
             // 插入export default里面的内容
             components: {},
             props: [],
-            data() {
-                return {
-                    formData: {
-                        pls_pool_key: "{$config.pls_pool_key}",
-                        pls_call_display_type: "{$config.pls_call_display_type}",
-                        pls_is_recording_enabled: "{$config.pls_is_recording_enabled}"
-                    },
-                    rules: {
-                        pool_key: [{
-                            required: true,
-                            message: '请输入号码池key',
-                            trigger: 'change'
-                        }],
-                    },
-                }
+            data:  {
+                formData: {
+                    pls_pool_key: "{$config.pls_pool_key}",
+                    pls_call_display_type: "{$config.pls_call_display_type}",
+                    pls_is_recording_enabled: "{$config.pls_is_recording_enabled}"
+                },
+                rules: {
+                    pool_key: [{
+                        required: true,
+                        message: '请输入号码池key',
+                        trigger: 'change'
+                    }],
+                },
             },
             computed: {},
             watch: {},
-            created() {
+            created: function() {
             },
-            mounted() {
+            mounted: function() {
             },
             methods: {
-                submitForm() {
-                    this.$refs['elForm'].validate(valid => {
+                submitForm: function() {
+                    this.$refs['elForm'].validate(function(valid) {
                         if (!valid) return;
                         $.ajax({
                             url: "{:api_url('/aliyun/pls/editConfig')}",

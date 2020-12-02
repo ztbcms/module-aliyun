@@ -198,7 +198,7 @@
                 },
                 deleteBind: function (bind_axb_id) {
                     var _this = this;
-                    this.$confirm('是否确定删除该号码？').then(() => {
+                    this.$confirm('是否确定删除该号码？').then(function() {
                         $.ajax({
                             url: "{:api_url('/aliyun/pls/deleteBind')}",
                             data: {bind_axb_id: bind_axb_id},
@@ -211,12 +211,11 @@
                                 }
                             }
                         })
-                    }).catch(err => {
-                    });
+                    })
                 },
                 unbindNumber: function (bind_axb_id) {
                     var _this = this;
-                    this.$confirm('是否确定解绑该号码？').then(() => {
+                    this.$confirm('是否确定解绑该号码？').then(function() {
                         $.ajax({
                             url: "{:api_url('/aliyun/pls/unbindNumber')}",
                             data: {bind_axb_id: bind_axb_id},
@@ -229,10 +228,9 @@
                                 }
                             }
                         })
-                    }).catch(err => {
-                    });
+                    })
                 },
-                currentPageChange(e) {
+                currentPageChange: function(e) {
                     this.currentPage = e;
                     this.getList();
                 },

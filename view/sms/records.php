@@ -66,7 +66,7 @@
                 this.getList();
             },
             methods: {
-                currentPageChange(e) {
+                currentPageChange: function(e) {
                     this.currentPage = e;
                     this.getList();
                 },

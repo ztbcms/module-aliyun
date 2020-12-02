@@ -48,7 +48,7 @@
                         success: function (res) {
                             layer.msg(res.msg);
                             if (res.status) {
-                                location.href = "{:urlx('aliyun/pls/index')}"
+                                location.href = "{:api_url('aliyun/pls/index')}"
                             }
                         }
                     })
